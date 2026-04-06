@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build stage - validating files"
-                bat 'ls'
+                bat 'dir'
             }
         }
 
