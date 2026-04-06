@@ -17,10 +17,10 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-                echo "Testing HTML"
-                bat 'echo "Basic test passed"'
-            }
+    steps {
+        echo "Running Selenium Test"
+        bat 'python test.py'
+          }
         }
 
         stage('Docker Build') {
