@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/Gauri727/habit-tracker-devops.git'
+               git branch: 'main', url: 'https://github.com/Gauri727/habit-tracker-devops.git'
             }
         }
 
