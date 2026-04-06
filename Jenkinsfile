@@ -12,20 +12,20 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build stage - validating files"
-                sh 'ls'
+                bat 'ls'
             }
         }
 
         stage('Test') {
             steps {
                 echo "Testing HTML"
-                sh 'echo "Basic test passed"'
+                bat 'echo "Basic test passed"'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t habit-app .'
+                bat 'docker build -t habit-app .'
             }
         }
 
