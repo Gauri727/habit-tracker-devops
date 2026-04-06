@@ -30,10 +30,9 @@ pipeline {
         }
 
         stage('Deploy') {
-    steps {
-        bat 'docker rm -f habit-container || echo no container'
-        bat 'docker run -d -p 8082:80 --name habit-container habit-app'
-    }
-}
+            steps {
+                bat 'docker run -d -p 8082:80 habit-app'
+            }
+        }
     }
 }
