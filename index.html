@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vitals — Daily Habit & Energy Journal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+
+<!-- LINK CSS -->
+<link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-leaf">🌿</div>
+    <div>
+      <div class="logo-text">Vitals</div>
+      <div class="logo-tagline">Daily Wellness Journal</div>
+    </div>
+  </div>
+  <div class="header-date">
+    <div class="date-big" id="headerDate"></div>
+    <div class="date-small" id="headerTime"></div>
+  </div>
+</header>
+
+<nav class="nav-tabs">
+  <div class="nav-tab active" data-page="today">✦ Today</div>
+  <div class="nav-tab" data-page="history">📋 History</div>
+  <div class="nav-tab" data-page="insights">📈 Insights</div>
+</nav>
+
+<main>
+
+  <!-- TODAY -->
+  <div class="page active" id="page-today">
+    <div class="section-head">
+      <h2>Good <span id="greetingPart">day</span> ✦</h2>
+      <div class="subtitle">Log how you're feeling and what you accomplished today</div>
+    </div>
+
+    <div class="today-grid">
+
+      <div class="tracker-card">
+        <div class="card-label"><div class="dot" style="background:var(--terracotta)"></div>Mood</div>
+        <div class="mood-grid" id="moodGrid">
+          <button class="mood-btn" data-mood="😔" data-label="Low">😔</button>
+          <button class="mood-btn" data-mood="😕" data-label="Meh">😕</button>
+          <button class="mood-btn" data-mood="😐" data-label="Okay">😐</button>
+          <button class="mood-btn" data-mood="🙂" data-label="Good">🙂</button>
+          <button class="mood-btn" data-mood="😄" data-label="Great">😄</button>
+          <button class="mood-btn" data-mood="🤩" data-label="Amazing">🤩</button>
+        </div>
+        <div class="mood-label" id="moodLabel">Select how you feel</div>
+      </div>
+
+      <div class="tracker-card">
+        <div class="card-label"><div class="dot" style="background:var(--gold)"></div>Energy Level</div>
+        <div class="slider-value"><span id="energyVal">5</span><span> / 10</span></div>
+        <input type="range" id="energySlider" min="1" max="10" value="5"/>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:.65rem;color:var(--brown-muted);">
+          <span>Exhausted</span><span>Energised</span>
+        </div>
+      </div>
+
+      <div class="tracker-card">
+        <div class="card-label"><div class="dot" style="background:var(--sky)"></div>Water Intake</div>
+        <div class="water-drops" id="waterDrops"></div>
+        <div class="water-label" id="waterLabel">0 of 8 glasses (0 ml)</div>
+      </div>
+
+      <div class="tracker-card">
+        <div class="card-label"><div class="dot" style="background:var(--lavender)"></div>Sleep Last Night</div>
+        <div class="sleep-inputs">
+          <div class="time-field"><label>Bedtime</label><input type="time" id="sleepBed" value="23:00"/></div>
+          <div class="time-field"><label>Wake Up</label><input type="time" id="sleepWake" value="07:00"/></div>
+        </div>
+        <div class="sleep-duration" id="sleepDuration">8h 0m <span>of sleep</span></div>
+      </div>
+
+      <div class="tracker-card habits-card">
+        <div class="card-label"><div class="dot" style="background:var(--sage)"></div>Daily Habits</div>
+        <div class="habits-list" id="habitsList"></div>
+        <div class="add-habit-row">
+          <div class="emoji-pick" id="emojiPick" title="Pick icon">
+            <span id="pickedEmoji">🏃</span>
+            <div class="emoji-options" id="emojiOptions"></div>
+          </div>
+          <input class="add-habit-input" id="newHabitInput" placeholder="Add a new habit…" maxlength="40"/>
+          <button class="btn-add" id="addHabitBtn">+ Add</button>
+        </div>
+      </div>
+
+      <div class="tracker-card" style="grid-column:1/-1;">
+        <div class="card-label"><div class="dot" style="background:var(--gold)"></div>Journal Note</div>
+        <textarea class="notes-area" id="journalNote" placeholder="Write a thought, reflection, or intention for today…" rows="3"></textarea>
+      </div>
+
+    </div>
+
+    <button class="save-btn" id="saveBtn">✦ Save Today's Entry</button>
+    <div class="save-confirm" id="saveConfirm"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="page" id="page-history">
+    <div class="section-head">
+      <h2>History</h2>
+      <div class="subtitle">Your past wellness journal entries</div>
+    </div>
+    <div class="history-grid" id="historyGrid"></div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="page" id="page-insights">
+    <div class="section-head">
+      <h2>Insights</h2>
+      <div class="subtitle">Patterns from your last 7 days</div>
+    </div>
+    <div class="insights-grid" id="insightsGrid"></div>
+    <div class="chart-card">
+      <div class="chart-title">⚡ Energy — Last 7 Days</div>
+      <div class="bar-chart" id="energyChart"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">💧 Water Intake — Last 7 Days</div>
+      <div class="bar-chart" id="waterChart"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">🌙 Sleep Hours — Last 7 Days</div>
+      <div class="bar-chart" id="sleepChart"></div>
+    </div>
+    <div class="habits-week-card">
+      <div class="chart-title" style="margin-bottom:16px;">✦ Habit Consistency — Last 7 Days</div>
+      <div id="habitWeekTable"></div>
+    </div>
+  </div>
+
+</main>
+<!-- (KEEP YOUR ENTIRE BODY SAME — NO CHANGE) -->
+
+<!-- LINK JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
