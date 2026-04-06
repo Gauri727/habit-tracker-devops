@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 <script>
 const EMOJIS=['🏃','🧘','📚','💪','🥗','🚴','✍️','🛁','🧹','💊','🎨','🎵','🌳','☕','🧃','🍎','💤','🤸','🦷','🧠'];
 let selectedMood='';
@@ -264,3 +265,4 @@ function renderHabitWeek(last7,dates){
   container.innerHTML=html;
 }
 </script>
+});
