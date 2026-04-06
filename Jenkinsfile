@@ -31,7 +31,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 8082:80 habit-app'
+                bat 'docker run -d -p 8082:80 habit-app'
             }
         }
     }
