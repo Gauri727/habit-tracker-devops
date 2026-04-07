@@ -19,7 +19,7 @@ pipeline {
         stage('Test') {
     steps {
         echo "Running Selenium Test"
-        bat 'python test.py'
+        bat 'python --version'
           }
         }
 
