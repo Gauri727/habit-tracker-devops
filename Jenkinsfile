@@ -19,7 +19,7 @@ pipeline {
         stage('Test') {
     steps {
         echo "Running Selenium Test"
-        bat 'python --version'
+        bat '"C:\\Program Files\\Python314\\python.exe" test.py'
           }
         }
 
