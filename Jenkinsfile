@@ -16,13 +16,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-    steps {
-        echo "Running Selenium Test"
-        bat '"C:\\Program Files\\Python314\\python.exe" test.py'
-          }
-        }
-
         stage('Docker Build') {
             steps {
                 bat 'docker build -t habit-app .'
@@ -33,6 +26,13 @@ pipeline {
             steps {
                 bat 'docker run -d -p 8082:80 habit-app'
             }
+        }
+
+        stage('Test') {
+    steps {
+        echo "Running Selenium Test"
+        bat '"C:\\Program Files\\Python314\\python.exe" test.py'
+          }
         }
     }
 }
